@@ -175,6 +175,40 @@ ORDER BY nacimiento ASC
 
 
 ---- c. ¿Cuál es el libro más solicitado? 
+----EN CASO QUE EXISTIERA UN UNICO LIBRO MAS SOLICITADO
+
+SELECT  COUNT(*) as "VECES SOLCITADO", libros.titulo AS LIBRO
+FROM prestamos, libros
+WHERE prestamos.isbn=libros.isbn
+GROUP BY LIBRO
+ORDER by COUNT (LIBROS) DESC
+LIMIT 1
+;
+
+----  VECES SOLCITADO |       libro
+---- -----------------+--------------------
+----                2 | MANUAL DE MECANICA
+---- (1 row)
+
+
+----EN EL CASO DE LPROBLEMA PLANTEANDO EXISTE TRES LIBROS MAS SOLICITADO
+----CON LAS MISMA CANTIDAD DE LIBROS SOLICITADOS 
+
+SELECT  COUNT(*) as "VECES SOLCITADO", libros.titulo AS LIBRO
+FROM prestamos, libros
+WHERE prestamos.isbn=libros.isbn
+GROUP BY LIBRO
+HAVING COUNT(libros.titulo)>1
+;
+
+
+----  VECES SOLCITADO |         libro
+---- -----------------+------------------------
+----                2 | MANUAL DE MECANICA
+----                2 | POESIAS CONTEMPORANEAS
+----                2 | CUENTOS DE TERROR
+---- (3 rows)
+
 
 
 ---- d. Si se cobrara una multa de $100 por cada día de atraso, mostrar cuánto
