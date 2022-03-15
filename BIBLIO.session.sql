@@ -177,7 +177,7 @@ ORDER BY nacimiento ASC
 ---- c. ¿Cuál es el libro más solicitado? 
 ----EN CASO QUE EXISTIERA UN UNICO LIBRO MAS SOLICITADO
 
-SELECT  COUNT(*) as "VECES SOLCITADO", libros.titulo AS LIBRO
+SELECT  COUNT(*) as "VECES SOLICITADO", libros.titulo AS LIBRO
 FROM prestamos, libros
 WHERE prestamos.isbn=libros.isbn
 GROUP BY LIBRO
@@ -185,7 +185,7 @@ ORDER by COUNT (LIBROS) DESC
 LIMIT 1
 ;
 
-----  VECES SOLCITADO |       libro
+----  VECES SOLICITADO |       libro
 ---- -----------------+--------------------
 ----                2 | MANUAL DE MECANICA
 ---- (1 row)
@@ -194,7 +194,7 @@ LIMIT 1
 ----EN EL CASO DEL PROBLEMA PLANTEANDO EXISTE TRES LIBROS MAS SOLICITADO
 ----CON LAS MISMA CANTIDAD DE LIBROS SOLICITADOS 
 
-SELECT  COUNT(*) as "VECES SOLCITADO", libros.titulo AS LIBRO
+SELECT  COUNT(*) as "VECES SOLICITADO", libros.titulo AS LIBRO
 FROM prestamos, libros
 WHERE prestamos.isbn=libros.isbn
 GROUP BY LIBRO
@@ -202,7 +202,7 @@ HAVING COUNT(libros.titulo)>1
 ;
 
 
-----  VECES SOLCITADO |         libro
+----  VECES SOLICITADO |         libro
 ---- -----------------+------------------------
 ----                2 | MANUAL DE MECANICA
 ----                2 | POESIAS CONTEMPORANEAS
